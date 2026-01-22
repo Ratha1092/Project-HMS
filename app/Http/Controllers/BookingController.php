@@ -22,16 +22,12 @@ class BookingController extends Controller
 
     public function index()
     {
-        return view('bookings.index', [
-            'bookings' => Booking::with(['user', 'room.hotel'])->paginate(10),
-        ]);
+        return view('bookings.index', ['bookings' => Booking::with(['user', 'room.hotel'])->paginate(10),]);
     }
 
     public function create()
     {
-        return view('bookings.create', [
-            'rooms' => Room::with('hotel')->where('status', RoomStatus::AVAILABLE)->get(),
-        ]);
+        return view('bookings.create', ['rooms' => Room::with('hotel')->where('status', RoomStatus::AVAILABLE)->get(),]);
     }
 
     public function store(StoreBookingRequest $request): RedirectResponse
