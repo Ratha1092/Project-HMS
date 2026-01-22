@@ -20,16 +20,13 @@ class RoomController extends Controller
 
     public function index()
     {
-        return view('rooms.index', [
-            'rooms' => Room::with('hotel')->paginate(10),
+        return view('rooms.index', ['rooms' => Room::with('hotel')->paginate(10),
         ]);
     }
 
     public function create()
     {
-        return view('rooms.create', [
-            'hotels' => Hotel::all(),
-        ]);
+        return view('rooms.create', ['hotels' => Hotel::all(),]);
     }
 
     public function store(Request $request)

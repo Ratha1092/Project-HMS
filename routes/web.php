@@ -52,8 +52,7 @@ Route::middleware(['auth'])->group(function () {
     */
     Route::middleware(['auth','role:admin,manager,receptionist'])->group(function () {
 
-        Route::resource('bookings', BookingController::class)
-            ->only(['index', 'create', 'store', 'destroy']);
+        Route::resource('bookings', BookingController::class)->only(['index', 'create', 'store', 'destroy']);
 
     });
 
@@ -64,8 +63,7 @@ Route::middleware(['auth'])->group(function () {
     */
     Route::middleware(['role:admin'])->group(function () {
 
-        Route::get('/audit-logs', [AuditLogController::class, 'index'])
-            ->name('audit-logs.index');
+        Route::get('/audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
 
     });
 });
